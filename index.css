@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1f1f1f;
+    color: lightgrey;
+}
+.emoji {
+    height: 1em;
+    width: 1em;
+}
+.select_menu {
+    outline: none;
+    color: white;
+    border:
+    #0074fb .1em solid;
+    background-color:black;
+    padding-left:.1em;
+    height:2.8em;
+    width:13em;
+    font-size:1em;
+}
+input{
+    border:
+    #0074fb .1em solid;
+    background-color:black;
+    color:white;
+    outline:none;
+    height:2.5em;
+    width:13em;
+    font-size:1em;
+    padding-left: .5em;
+}
+::-webkit-input-placeholder{
+    color:rgb(255, 255, 255);
+}
+.btn{
+    font-size:1.5em;
+    height:2em;
+    border-radius:.2em;
+    width:8em;
+    cursor:pointer;
+    color:white;
+    outline:none;
+    border:none;
+    background-color:
+    #0074fb;
+    transition: all 0.2s;
+}
+.btn:hover{
+    transform:scale(1.1);
+}

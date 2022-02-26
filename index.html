@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Is this income a starvation wage?">
+    <meta name="author" content="by: stealthwave & celeron">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="FAVICON_LINK" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <title>Starvation Wage Calculator</title>
+</head>
+<body>
+    <center>
+        <h2 class="title">Are you being paid below the cost of living by your employer? Find out now with this tool.</h2>
+        <h3>Find out below by inputting your area and current annual gross income</h3>
+        <p>If you have to choose between eating and paying your rent, you're likely a victim of being exploited by billionares and oligarchs.</p>
+        <p>This is how capitalism works, all while destroying our planet in the name of infinite economic growth on a finite planet (which is impossible, by the way)</p>
+        <input type="text" class="income" placeholder="Annual Gross Income">
+        <select class="select_menu" name="location" id="location">
+            <option value="option0">New York City</option>
+            <option value="option1">Los Angeles</option>
+            <option value="option2">Chicago</option>
+            <option value="option3">Houston</option>
+            <option value="option4">Phoenix</option>
+            <option value="option5">Philadelphia</option>
+            <option value="option6">San Antonio</option>
+            <option value="option7">San Diego</option>
+            <option value="option8">Dallas</option>
+            <option value="option9">San Jose</option>
+        </select><br><br>
+        <button class="btn">Calculate</button>
+        <h2 class="result"></h2>
+    </center>
+</body>
+<script>
+    window.onload = function() {      
+        twemoji.parse(document.body, 
+            {folder: "svg", ext: ".svg"} 
+        );
+    }
+
+    const costOfLiving = {
+        "option0": 40000,
+        "option1": 75000,
+        "option2": 50000,
+        "option3": 35000,
+        "option4": 60000,
+        "option5": 70000,
+        "option6": 35000,
+        "option7": 50000,
+        "option8": 35000,
+        "option9": 75000
+    }
+
+    const btn = document.querySelector(".btn");
+    const input = document.querySelector(".income");
+    const select = document.querySelector(".select_menu");
+    const result = document.querySelector(".result");
+    let selected;
+    btn.onclick = function(calculate) {
+        switch(select.value) {
+            case "option0":
+                selected = costOfLiving.option0;
+                break;
+            case "option1":
+                selected = costOfLiving.option1;
+                break;
+            case "option2":
+                selected = costOfLiving.option2;
+                break;
+            case "option3":
+                selected = costOfLiving.option3;
+                break;
+            case "option4":
+                selected = costOfLiving.option4;
+                break;
+            case "option5":
+                selected = costOfLiving.option5;
+                break;
+            case "option6":
+                selected = costOfLiving.option6;
+                break;
+            case "option7":
+                selected = costOfLiving.option7;
+                break;
+            case "option8":
+                selected = costOfLiving.option8;
+                break;
+            case "option9":
+                selected = costOfLiving.option9;
+        }
+
+        if (input.value < selected) {
+            result.innerHTML = "DANGER: This is not a living income, you are likely being exploited.";
+            result.style = "color:#ff2121;"
+            var Siren = new Audio('siren.mp3');
+            Siren.play();
+        } else if (input.value >= selected) {
+            result.innerHTML = "This income is suitable for the area you are living in. 👍";
+            result.style = "color:#5dff2b;"
+        }
+    }
+</script>
