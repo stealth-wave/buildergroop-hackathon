@@ -100,9 +100,12 @@
             result.style = "color:#ff2121;"
             var Siren = new Audio('siren.mp3');
             Siren.play();
-        } else if (input.value >= selected) {
+        } else if (input.value >= selected && input.value < 400000) {
             result.innerHTML = "This income is suitable for the area you are living in. 👍";
             result.style = "color:#5dff2b;"
+        } else if (input.value >= 400000) {
+            result.innerHTML = "DANGER: You make an excessively high amount of money while others starve in the streets. You should consider donating to grassroots movements and advocating for systemic change.";
+            result.style = "color:#ff2121";
         }
     }
 </script>
