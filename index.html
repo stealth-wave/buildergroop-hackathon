@@ -17,7 +17,8 @@
         <h3>Find out below by inputting your area and current annual gross income</h3>
         <p>If you have to choose between eating and paying your rent, you're likely a victim of being exploited by billionares and oligarchs.</p>
         <p>This is how capitalism works, all while destroying our planet in the name of infinite economic growth on a finite planet (which is impossible, by the way)</p>
-        <input type="text" class="income" placeholder="Annual Gross Income">
+        <h5>Do not add any formatting such as commas or periods to the income</h5>
+        $<input type="text" class="income" placeholder="Annual Gross Income">
         <select class="select_menu" name="location" id="location">
             <option value="option0">New York City</option>
             <option value="option1">Los Angeles</option>
@@ -92,7 +93,9 @@
                 selected = costOfLiving.option9;
         }
 
-        if (input.value < selected) {
+        if (!input.value) {
+            return alert("Please enter your income");
+        } else if (input.value < selected) {
             result.innerHTML = "DANGER: This is not a living income, you are likely being exploited.";
             result.style = "color:#ff2121;"
             var Siren = new Audio('siren.mp3');
