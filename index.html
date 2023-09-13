@@ -1,111 +1,176 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Is this income a starvation wage?">
-    <meta name="author" content="by: stealthwave & celeron">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/x-icon" href="FAVICON_LINK" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    <title>Starvation Wage Calculator</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Is this income a starvation wage?" />
+  <meta name="author" content="by: stealthwave & celeron" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="icon" type="image/x-icon" href="FAVICON_LINK" />
+  <script
+    src="https://kit.fontawesome.com/c0325fc7f8.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <title>Fair Wage Calculator</title>
 </head>
 <body>
-    <center>
-        <h2 class="title">Are you being paid below the cost of living by your employer? Find out now with this tool.</h2>
-        <h3>Find out below by inputting your area and current annual gross income</h3>
-        <p>If you have to choose between eating and paying your rent, you're likely a victim of being exploited by billionares and oligarchs.</p>
-        <p>This is how capitalism works, all while destroying our planet in the name of infinite economic growth on a finite planet (which is impossible, by the way)</p>
-        <h5>Do not add any formatting such as commas or periods to the income</h5>
-        $<input type="text" class="income" placeholder="Annual Gross Income">
-        <select class="select_menu" name="location" id="location">
-            <option value="option0">New York City</option>
-            <option value="option1">Los Angeles</option>
-            <option value="option2">Chicago</option>
-            <option value="option3">Houston</option>
-            <option value="option4">Phoenix</option>
-            <option value="option5">Philadelphia</option>
-            <option value="option6">San Antonio</option>
-            <option value="option7">San Diego</option>
-            <option value="option8">Dallas</option>
-            <option value="option9">San Jose</option>
-        </select><br><br>
-        <button class="btn">Calculate</button>
-        <h2 class="result"></h2>
-    </center>
+  <center>
+    <h2 class="title" style="color: #ffd152; font-size: 60px; font-weight: 900">
+      <i class="fa-solid fa-hand-holding-dollar" style="color: #ffd152"></i>
+      Fair Wage Calculator
+    </h2>
+    <h3>
+      Do you think you're being paid fairly for your area? Find out below.
+    </h3>
+    <p>
+      If you have to choose between eating and paying your rent, you're likely a
+      victim of being exploited by billionares and oligarchs.
+    </p>
+    <p>
+      This is how capitalism works, all while destroying our planet in the name
+      of infinite economic growth on a finite planet (which is impossible, by
+      the way)
+    </p>
+    <h5>
+      Do not include additional formatting in the inputs, including dollar
+      signs, commas, or periods.
+    </h5>
+    $<input type="text" class="income" placeholder="Annual Gross Income" />
+    <select class="select_menu" name="location" id="location">
+      <option value="option0">New York City</option>
+      <option value="option1">Los Angeles</option>
+      <option value="option2">Chicago</option>
+      <option value="option3">Houston</option>
+      <option value="option4">Phoenix</option>
+      <option value="option5">Philadelphia</option>
+      <option value="option6">San Antonio</option>
+      <option value="option7">San Diego</option>
+      <option value="option8">Dallas</option>
+      <option value="option9">San Jose</option>
+      <option value="option10">Washington, DC</option>
+      <option value="option11">Vancouver</option>
+      <option value="option12">Miami</option>
+      <option value="option13">Boston</option>
+      <option value="option14">Des Moines</option>
+      <option value="option15">Little Rock</option>
+      <option value="option16">Denver</option>
+      </select
+    ><br /><br />
+    <button class="btn" style="margin-top: 10px; width: 500px">
+      See Result
+    </button>
+    <h2 class="result"></h2>
+  </center>
 </body>
 <script>
-    window.onload = function() {      
-        twemoji.parse(document.body, 
-            {folder: "svg", ext: ".svg"} 
-        );
+  window.onload = function () {
+    twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
+  };
+
+  const costOfLiving = {
+    option0: 40000,
+    option1: 75000,
+    option2: 50000,
+    option3: 35000,
+    option4: 60000,
+    option5: 70000,
+    option6: 35000,
+    option7: 50000,
+    option8: 35000,
+    option9: 75000,
+    option10: 60000,
+    option11: 40000,
+    option12: 58000,
+    option13: 60000,
+    option14: 24000,
+    option15: 22000,
+    option16: 32000
+  };
+
+  const btn = document.querySelector(".btn");
+  const input = document.querySelector(".income");
+  const select = document.querySelector(".select_menu");
+  const result = document.querySelector(".result");
+  let selected;
+  btn.onclick = function (calculate) {
+    switch (select.value) {
+      case "option0":
+        selected = costOfLiving.option0;
+        break;
+      case "option1":
+        selected = costOfLiving.option1;
+        break;
+      case "option2":
+        selected = costOfLiving.option2;
+        break;
+      case "option3":
+        selected = costOfLiving.option3;
+        break;
+      case "option4":
+        selected = costOfLiving.option4;
+        break;
+      case "option5":
+        selected = costOfLiving.option5;
+        break;
+      case "option6":
+        selected = costOfLiving.option6;
+        break;
+      case "option7":
+        selected = costOfLiving.option7;
+        break;
+      case "option8":
+        selected = costOfLiving.option8;
+        break;
+      case "option9":
+        selected = costOfLiving.option9;
+        break;
+        case "option10":
+        selected = costOfLiving.option10;
+        break;
+        case "option11":
+        selected = costOfLiving.option11;
+        break;
+        case "option12":
+        selected = costOfLiving.option12;
+        break;
+        case "option13":
+        selected = costOfLiving.option13;
+        break;
+        case "option14":
+        selected = costOfLiving.option14;
+        break;
+        case "option15":
+        selected = costOfLiving.option14;
+        break;
+        case "option16":
+        selected = costOfLiving.option14;
     }
 
-    const costOfLiving = {
-        "option0": 40000,
-        "option1": 75000,
-        "option2": 50000,
-        "option3": 35000,
-        "option4": 60000,
-        "option5": 70000,
-        "option6": 35000,
-        "option7": 50000,
-        "option8": 35000,
-        "option9": 75000
-    }
+    if (!input.value) {
+      return alert("Please enter your annual gross income.");
+    } else if (input.value < selected) {
+      result.innerHTML =
+        '<i class="fa-solid fa-xmark" style="color: #ffd152;"></i> This is not a living income, you are likely being exploited.';
+      result.style = "color:#ffd152;";
+      var Siren = new Audio("siren.mp3");
+      Siren.play();
 
-    const btn = document.querySelector(".btn");
-    const input = document.querySelector(".income");
-    const select = document.querySelector(".select_menu");
-    const result = document.querySelector(".result");
-    let selected;
-    btn.onclick = function(calculate) {
-        switch(select.value) {
-            case "option0":
-                selected = costOfLiving.option0;
-                break;
-            case "option1":
-                selected = costOfLiving.option1;
-                break;
-            case "option2":
-                selected = costOfLiving.option2;
-                break;
-            case "option3":
-                selected = costOfLiving.option3;
-                break;
-            case "option4":
-                selected = costOfLiving.option4;
-                break;
-            case "option5":
-                selected = costOfLiving.option5;
-                break;
-            case "option6":
-                selected = costOfLiving.option6;
-                break;
-            case "option7":
-                selected = costOfLiving.option7;
-                break;
-            case "option8":
-                selected = costOfLiving.option8;
-                break;
-            case "option9":
-                selected = costOfLiving.option9;
-        }
-
-        if (!input.value) {
-            return alert("Please enter your income");
-        } else if (input.value < selected) {
-            result.innerHTML = "DANGER: This is not a living income, you are likely being exploited.";
-            result.style = "color:#ff2121;"
-            var Siren = new Audio('siren.mp3');
-            Siren.play();
-        } else if (input.value >= selected && input.value < 400000) {
-            result.innerHTML = "This income is suitable for the area you are living in. 👍";
-            result.style = "color:#5dff2b;"
-        } else if (input.value >= 400000) {
-            result.innerHTML = "DANGER: You make an excessively high amount of money while others starve in the streets. You should consider donating to grassroots movements and advocating for systemic change.";
-            result.style = "color:#ff2121";
-        }
+      setTimeout(function () {
+        Siren.pause();
+        Siren.currentTime = 0;
+      }, 2300);
+    } else if (input.value >= selected && input.value < 400000) {
+      result.innerHTML =
+        '<i class="fa-solid fa-check"></i>   This income is suitable for the area you are living in! ';
+      result.style = "color:#ffd152; font-weight:800;";
+    } else if (input.value >= 400000) {
+      result.innerHTML =
+        '<i class="fa-solid fa-hand-fist" style="color: #ffd152;"></i> You\'re making too much money. <br> <i class="fa-solid fa-hotel" style="color: #ffd152;"></i> While you\'re enjoying your comfortable home, others are out starving on the streets. <br> <i class="fa-solid fa-hand-holding-dollar" style="color: #ffd152;"></i> You should consider to donating to grassroots movements and advocating for systemic change. ';
+      result.style = "color:white; font-weight:800;";
     }
+  };
 </script>
